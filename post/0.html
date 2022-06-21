@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#33474d">
+	<title>Hexo</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+	<header class="header">
+		<nav class="header__nav">
+			
+				<a href="/archives" class="header__link">Archive</a>
+			
+				<a href="/tags" class="header__link">Tags</a>
+			
+				<a href="/atom.xml" class="header__link">RSS</a>
+			
+		</nav>
+		<h1 class="header__title"><a href="/">Hexo</a></h1>
+		<h2 class="header__subtitle"></h2>
+	</header>
+
+	<main>
+		<article>
+	
+		<h1></h1>
+	
+	<div class="article__infos">
+		<span class="article__date">2022-06-21</span><br />
+		
+		
+	</div>
+
+	
+
+	
+		<h1 id="KAFKA"><a href="#KAFKA" class="headerlink" title="KAFKA"></a>KAFKA</h1><h2 id="生产者API"><a href="#生产者API" class="headerlink" title="生产者API"></a>生产者API</h2><h3 id="1-创建topic"><a href="#1-创建topic" class="headerlink" title="(1)创建topic"></a>(1)创建topic</h3><p>基本方式：kafka的bin目录下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kafka-topics.sh --zookeeper node1:2181,node2:2181,node3:2181 --create --replication-factor 3 --partitions 3 --topic test</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-查看已有topic："><a href="#2-查看已有topic：" class="headerlink" title="(2)查看已有topic："></a>(2)查看已有topic：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --zookeeper node1:2181 –list</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-增加分区数"><a href="#3-增加分区数" class="headerlink" title="(3) 增加分区数"></a>(3) 增加分区数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --alter --topic tpc_1 --partitions 3 --zookeeper node1:2181</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-动态配置-topic-参数"><a href="#4-动态配置-topic-参数" class="headerlink" title="(4) 动态配置 topic 参数"></a>(4) <strong>动态配置</strong> <strong>topic</strong> <strong>参数</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-configs.sh --zookeeper node1:2181 --entity-type topics --entity-name tpc_1 --alter --add-config compression.type=gzip</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-删除配置参数"><a href="#5-删除配置参数" class="headerlink" title="(5) 删除配置参数"></a>(5) 删除配置参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-configs.sh --zookeeper node1:2181 --entity-type topics --entity-name tpc_1 --alter --delete-config compression.type</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-删除topic"><a href="#6-删除topic" class="headerlink" title="(6)删除topic"></a>(6)删除topic</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./ kafka-topics.sh  --delete --topic test --zookeeper node1：2181</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-生产者-kafka-console-producer"><a href="#7-生产者-kafka-console-producer" class="headerlink" title="(7) 生产者:kafka-console-producer"></a>(7) 生产者:kafka-console-producer</h3><h3 id="消费者-kafka-console-consumer"><a href="#消费者-kafka-console-consumer" class="headerlink" title="消费者:kafka-console-consumer"></a>消费者:kafka-console-consumer</h3>
+	
+
+	
+		<span class="different-posts"><a href="/post/0.html" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
+
+	
+
+</article>
+
+	</main>
+
+	<footer class="footer">
+	<div class="footer-content">
+		
+	      <div class="footer__element">
+	<p>Hi there, <br />welcome to my Blog glad you found it. Have a look around, will you?</p>
+</div>
+
+	    
+	      <div class="footer__element">
+	<h5>Check out</h5>
+	<ul class="footer-links">
+		<li class="footer-links__link"><a href="/archives">Archive</a></li>
+		
+		  <li class="footer-links__link"><a href="/atom.xml">RSS</a></li>
+	    
+		<li class="footer-links__link"><a href="/about">about page</a></li>
+		<li class="footer-links__link"><a href="/tags">Tags</a></li>
+		<li class="footer-links__link"><a href="/categories">Categories</a></li>
+	</ul>
+</div>
+
+	    
+
+		<div class="footer-credit">
+			<span>© 2022 John Doe | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/HoverBaum/meilidu-hexo">MeiliDu</a></span>
+		</div>
+
+	</div>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
